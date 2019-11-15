@@ -7,11 +7,15 @@ const StartScreen = props => {
     const toGame = () => {
         props.navigation.navigate('Game')
     }
+    const toRules = () => {
+        props.navigation.navigate('Rules')
+    }
 
     return (
         <View style={styles.screen}>
-            <Text>Boggle</Text>
-            <Button title='start' onPress={toGame}></Button>
+            <Text style={styles.title}>Boggle</Text>
+            <Button title='start' onPress={toGame} style={styles.startButton}></Button>
+            <Button title='rules' onPress={toRules} style={styles.rulesButton}></Button>
         </View>
     )
 }
@@ -19,7 +23,16 @@ const StartScreen = props => {
 const styles = StyleSheet.create({
     screen:{
         flex: 1,
-        backgroundColor: Colors.primary
+        backgroundColor: Colors.primary,
+        padding: 30,
+    },
+    title: {
+        fontSize: 60,
+        color: 'white',
+        textAlign: 'center'
+    },
+    startButton: {
+        marginTop: 50,
     }
 })
 
