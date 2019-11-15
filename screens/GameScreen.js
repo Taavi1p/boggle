@@ -1,10 +1,17 @@
 import React from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 
+import CustomHeader from '../components/CustomHeader';
 import Colors from '../constants/Colors';
 
 const GameScreen = props => {
+
+    const toStart = () => {
+        props.navigation.navigate('Start')
+    }
     return (
+        <View style={{flex: 1}}>
+            <CustomHeader onClick={toStart}>cancel game</CustomHeader>
         <View style={styles.screen}>
             <View style={styles.board}>
                 <View style={styles.cubeRow}>
@@ -96,6 +103,7 @@ const GameScreen = props => {
                     </View>
                 </View>
             </View>
+        </View>
         </View>
     )
 }

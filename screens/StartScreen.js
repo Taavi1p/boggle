@@ -1,6 +1,8 @@
 import React from 'react';
 import {StyleSheet, View, Text, Button} from 'react-native';
 import Colors from '../constants/Colors';
+import StartButtom from '../components/StartButton';
+import MainButton from '../components/MainButton';
 
 const StartScreen = props => {
 
@@ -14,8 +16,8 @@ const StartScreen = props => {
     return (
         <View style={styles.screen}>
             <Text style={styles.title}>Boggle</Text>
-            <Button title='start' onPress={toGame} style={styles.startButton}></Button>
-            <Button title='rules' onPress={toRules} style={styles.rulesButton}></Button>
+            <StartButtom onClick={toGame} />
+           <MainButton onClick={toRules}>RULES</MainButton>
         </View>
     )
 }
@@ -25,11 +27,14 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: Colors.primary,
         padding: 30,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     title: {
-        fontSize: 60,
+        fontSize: 80,
         color: 'white',
-        textAlign: 'center'
+        textAlign: 'center',
+        fontWeight: 'bold'
     },
     startButton: {
         marginTop: 50,
