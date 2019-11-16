@@ -6,16 +6,33 @@ import MainButton from '../components/MainButton';
 
 const StartScreen = props => {
 
-    const optionsArray = ['show', 'hidden', 'none']
     const [minutes, setMinutes] = useState(2);
-    const [optionNum, setOptionNum] = useState(0)
-    let option = <Text style={styles.text}>{optionsArray[optionNum]}</Text>
+    const [isSoloMode, setIsSoloMode] = useState(false);
+    const [is1on1Mode, setIs1on1Mode] = useState(false);
+    const [isGroupMode, setIsGroupMode] = useState(false);
 
     const toGame = () => {
-        props.navigation.navigate('Game')
+        props.navigation.navigate({routeName: 'Game', params: {
+            isSoloMode: isSoloMode, is1on1Mode: is1on1Mode, isGroupMode: isGroupMode,
+        }})
     }
     const toRules = () => {
         props.navigation.navigate('Rules')
+    }
+
+    const startSoloGame = () => {
+        setIsSoloMode(true);
+        toGame();
+    }
+
+    const start1on1Game = () => {
+        setIs1on1Mode(true);
+        toGame();
+    }
+
+    const startGroupGame = () => {
+        setIsGroupMode(true);
+        toGame();
     }
 
     const addMins = () => {
@@ -23,44 +40,15 @@ const StartScreen = props => {
             setMinutes(minutes + 1)
         }
     }
-
     const subMins = () => {
         if (minutes >= 2) {
             setMinutes(minutes - 1)
         }
     }
 
-    const timerOptionsLast = () => {
-        if (optionNum === 0) {
-            setOptionNum(2);
-        } else {
-            setOptionNum(optionNum - 1)
-        }
-    }
-
-    const timerOptionsNext = () => {
-        if (optionNum === 2) {
-            setOptionNum(0)
-        }else {
-            setOptionNum(optionNum + 1)
-        }
-    }
-
     return (
         <View style={styles.screen}>
             <Text style={styles.title}>Boggle</Text>
-            <View style={styles.container}>
-                <Text style={styles.text}>timer</Text>
-                <View style={styles.box}>
-                    <TouchableOpacity onPress={timerOptionsLast}>
-                        <Image style={styles.imageLeft} source={require('../assets/arrow.png')} />
-                    </TouchableOpacity>
-                    {option}
-                    <TouchableOpacity onPress={timerOptionsNext}>
-                        <Image style={styles.image} source={require('../assets/arrow.png')} />
-                    </TouchableOpacity>
-                </View>
-            </View>
             <View style={styles.container}>
                 <Text style={styles.text}>minutes</Text>
                 <View style={styles.box}>
@@ -73,7 +61,11 @@ const StartScreen = props => {
                     </TouchableOpacity>
                 </View>
             </View>
-            <StartButtom onClick={toGame} />
+            <View style={styles.buttons}>
+                <StartButtom onClick={startSoloGame}>SOLO GAME</StartButtom>
+                <StartButtom onClick={start1on1Game}>1-ON-1 MODE</StartButtom>
+                <StartButtom onClick={startGroupGame}>GROUP MODE</StartButtom>
+            </View>
            <MainButton onClick={toRules}>RULES</MainButton>
         </View>
     )
@@ -123,6 +115,9 @@ const styles = StyleSheet.create({
         height: 20,
         width: 20,
         transform: [{rotate: '180deg'}]
+    },
+    buttons: {
+        marginTop: 50,
     }
 })
 

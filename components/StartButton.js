@@ -7,7 +7,7 @@ const StartButton = props => {
         <View style={styles.container}>
         <TouchableOpacity onPress={props.onClick}>
             <View style={styles.button}>
-                <Text style={styles.text}>START GAME</Text>
+                <Text style={styles.text}>{props.children}</Text>
             </View>
         </TouchableOpacity>
     </View>
@@ -16,7 +16,7 @@ const StartButton = props => {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 100,
+        marginTop: 10,
         width: 250,
     },
     button: {

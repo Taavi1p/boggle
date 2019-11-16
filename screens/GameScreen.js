@@ -4,7 +4,7 @@ import {StyleSheet, View, Text, Image} from 'react-native';
 import CustomHeader from '../components/CustomHeader';
 import Colors from '../constants/Colors';
 
-const lettersArray = ['a', 'a', 'a', 'a', 'a', 'b', 'b', 'c', 'c', 'd', 'd', 'e', 'e', 'e', 'e', 'e', 'f', 'g', 'g', 'h', 'h', 'i', 'i', 'i', 'i', 'j', 'j', 'k', 'k', 'l', 'l', 'l', 'm', 'm', 'n', 'n', 'o', 'o', 'o', 'o', 'o', 'p', 'p', 'p', 'q', 'r', 'r', 's', 's', 's', 't', 't', 't', 'u', 'u', 'u', 'u', 'v', 'v', 'w', 'x', 'y', 'z' ]
+const lettersArray = ['a', 'a', 'a', 'a', 'a', 'b', 'b', 'c', 'c', 'd', 'd', 'e', 'e', 'e', 'e', 'e', 'f', 'g', 'g', 'h', 'h', 'i', 'i', 'i', 'i', 'j', 'k', 'k', 'l', 'l', 'l', 'm', 'm', 'n', 'n', 'o', 'o', 'o', 'o', 'o', 'p', 'p', 'p', 'q', 'r', 'r', 's', 's', 's', 't', 't', 't', 'u', 'u', 'u', 'u', 'v', 'v', 'w', 'x', 'y', 'z' ]
 
 const GameScreen = props => {
 
@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
     },
     letter: {
         fontSize: 40,
-        textAlign: 'center'
+        textAlign: 'center',
     }
 })
 
