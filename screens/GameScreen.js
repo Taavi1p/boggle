@@ -4,7 +4,11 @@ import {StyleSheet, View, Text} from 'react-native';
 import CustomHeader from '../components/CustomHeader';
 import Colors from '../constants/Colors';
 
+const lettersArray = ['a', 'a', 'a', 'a', 'b', 'b', 'c', 'c', 'd', 'd', 'e', 'e', 'e', 'e', 'f', 'f', 'g', 'g', 'h', 'h', 'i', 'i', 'i', 'i', 'j', 'j', 'k', 'k', 'l', 'l', 'm', 'm', 'n', 'n', 'o', 'o', 'o', 'o', 'p', 'p', 'q', 'q', 'r', 'r', 's', 's', 't', 'u', 'u', 'u', 'u', 'v', 'v', 'w', 'w', 'x', 'y', 'y', 'z' ]
+
 const GameScreen = props => {
+
+    const randomLetter = lettersArray[Math.floor(Math.random()*lettersArray.length)];
 
     const toStart = () => {
         props.navigation.navigate('Start')
@@ -17,88 +21,88 @@ const GameScreen = props => {
                 <View style={styles.cubeRow}>
                     <View style={styles.cube}>
                         <View style={styles.ring}>
-                            <Text style={styles.letter}>A</Text>
+                            <Text style={styles.letter}>{randomLetter}</Text>
                         </View>
                     </View>
                     <View style={styles.cube}>
                         <View style={styles.ring}>
-                            <Text style={styles.letter}>B</Text>
+                            <Text style={styles.letter}>{randomLetter}</Text>
                         </View>
                     </View>
                     <View style={styles.cube}>
                         <View style={styles.ring}>
-                            <Text style={styles.letter}>C</Text>
+                            <Text style={styles.letter}>{randomLetter}</Text>
                         </View>
                     </View>
                     <View style={styles.cube}>
                         <View style={styles.ring}>
-                            <Text style={styles.letter}>D</Text>
-                        </View>
-                    </View>
-                </View>
-                <View style={styles.cubeRow}>
-                    <View style={styles.cube}>
-                        <View style={styles.ring}>
-                            <Text style={styles.letter}>G</Text>
-                        </View>
-                    </View>
-                    <View style={styles.cube}>
-                        <View style={styles.ring}>
-                            <Text style={styles.letter}>F</Text>
-                        </View>
-                    </View>
-                    <View style={styles.cube}>
-                        <View style={styles.ring}>
-                            <Text style={styles.letter}>E</Text>
-                        </View>
-                    </View>
-                    <View style={styles.cube}>
-                        <View style={styles.ring}>
-                            <Text style={styles.letter}>H</Text>
+                            <Text style={styles.letter}>{randomLetter}</Text>
                         </View>
                     </View>
                 </View>
                 <View style={styles.cubeRow}>
                     <View style={styles.cube}>
                         <View style={styles.ring}>
-                            <Text style={styles.letter}>J</Text>
+                            <Text style={styles.letter}>{randomLetter}</Text>
                         </View>
                     </View>
                     <View style={styles.cube}>
                         <View style={styles.ring}>
-                            <Text style={styles.letter}>K</Text>
+                            <Text style={styles.letter}>{randomLetter}</Text>
                         </View>
                     </View>
                     <View style={styles.cube}>
                         <View style={styles.ring}>
-                            <Text style={styles.letter}>L</Text>
+                            <Text style={styles.letter}>{randomLetter}</Text>
                         </View>
                     </View>
                     <View style={styles.cube}>
                         <View style={styles.ring}>
-                            <Text style={styles.letter}>M</Text>
+                            <Text style={styles.letter}>{randomLetter}</Text>
                         </View>
                     </View>
                 </View>
                 <View style={styles.cubeRow}>
                     <View style={styles.cube}>
                         <View style={styles.ring}>
-                            <Text style={styles.letter}>N</Text>
+                            <Text style={styles.letter}>{randomLetter}</Text>
                         </View>
                     </View>
                     <View style={styles.cube}>
                         <View style={styles.ring}>
-                            <Text style={styles.letter}>O</Text>
+                            <Text style={styles.letter}>{randomLetter}</Text>
                         </View>
                     </View>
                     <View style={styles.cube}>
                         <View style={styles.ring}>
-                            <Text style={styles.letter}>P</Text>
+                            <Text style={styles.letter}>{randomLetter}</Text>
                         </View>
                     </View>
                     <View style={styles.cube}>
                         <View style={styles.ring}>
-                            <Text style={styles.letter}>E</Text>
+                            <Text style={styles.letter}>{randomLetter}</Text>
+                        </View>
+                    </View>
+                </View>
+                <View style={styles.cubeRow}>
+                    <View style={styles.cube}>
+                        <View style={styles.ring}>
+                            <Text style={styles.letter}>{randomLetter}</Text>
+                        </View>
+                    </View>
+                    <View style={styles.cube}>
+                        <View style={styles.ring}>
+                            <Text style={styles.letter}>{randomLetter}</Text>
+                        </View>
+                    </View>
+                    <View style={styles.cube}>
+                        <View style={styles.ring}>
+                            <Text style={styles.letter}>{randomLetter}</Text>
+                        </View>
+                    </View>
+                    <View style={styles.cube}>
+                        <View style={styles.ring}>
+                            <Text style={styles.letter}>{randomLetter}</Text>
                         </View>
                     </View>
                 </View>
