@@ -13,7 +13,7 @@ const StartScreen = props => {
 
     const toGame = () => {
         props.navigation.navigate({routeName: 'Game', params: {
-            isSoloMode: isSoloMode, is1on1Mode: is1on1Mode, isGroupMode: isGroupMode,
+            isSoloMode: isSoloMode, is1on1Mode: is1on1Mode, isGroupMode: isGroupMode, minutes: minutes
         }})
     }
     const toRules = () => {
@@ -22,15 +22,25 @@ const StartScreen = props => {
 
     const startSoloGame = () => {
         setIsSoloMode(true);
+        setIs1on1Mode(false);
+        setIsGroupMode(false);
+        console.log('-----------------------');
+        console.log('solo mode  ' + isSoloMode);
+        console.log('1on1 mode  ' + is1on1Mode);
+        console.log('group mode  ' + isGroupMode);
         toGame();
     }
 
     const start1on1Game = () => {
+        setIsSoloMode(false);
         setIs1on1Mode(true);
+        setIsGroupMode(false);
         toGame();
     }
 
     const startGroupGame = () => {
+        setIsSoloMode(false);
+        setIs1on1Mode(false);
         setIsGroupMode(true);
         toGame();
     }
@@ -97,7 +107,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        width: 130,
+        width: 100,
 
     },
     text: {

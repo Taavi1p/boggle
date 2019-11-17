@@ -1,120 +1,82 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {StyleSheet, View, Text, Image} from 'react-native';
 
+import StaticBoard from '../components/StaticBoard';
 import CustomHeader from '../components/CustomHeader';
 import Colors from '../constants/Colors';
 
-const lettersArray = ['a', 'a', 'a', 'a', 'a', 'b', 'b', 'c', 'c', 'd', 'd', 'e', 'e', 'e', 'e', 'e', 'f', 'g', 'g', 'h', 'h', 'i', 'i', 'i', 'i', 'j', 'k', 'k', 'l', 'l', 'l', 'm', 'm', 'n', 'n', 'o', 'o', 'o', 'o', 'o', 'p', 'p', 'p', 'q', 'r', 'r', 's', 's', 's', 't', 't', 't', 'u', 'u', 'u', 'u', 'v', 'v', 'w', 'x', 'y', 'z' ]
+const lettersArray = ['a', 'a', 'a', 'a', 'a', 'b', 'c', 'd', 'e', 'e', 'e', 'e', 'e', 'f', 'g', 'g', 'h', 'h', 'i', 'i', 'j', 'k', 'k', 'l', 'l', 'm', 'm', 'm', 'n', 'n', 'o', 'o', 'o', 'p', 'p', 'q', 'r', 'r', 's', 's', 's', 's', 't', 't', 't', 't', 'u', 'u', 'v',  'w', 'y']
 
 const GameScreen = props => {
 
-    let randomLettersArray = [];
+    const [randomLettersArray, setRandomLettersArray] = useState([]);
+    const isSoloMode = props.navigation.getParam('isSoloMode');
+    const is1on1Mode = props.navigation.getParam('is1on1Mode');
+    const isGroupMode = props.navigation.getParam('isSoloMode');
+    const minutes = props.navigation.getParam('minutes');
+    const [timer, setTimer] = useState('');
+    const [firstRender, setFirstRender] = useState(true);
 
-    for (i = 0; i < 16; i++) {
-        randomLettersArray[i] = lettersArray[Math.floor(Math.random()*lettersArray.length)];
+    let time = 120;
+    const [board, setBoard] = useState(<Text>board failed to load</Text>);
+
+    if (firstRender) {
+        time = minutes * 60;
+        console.log('solo ' + isSoloMode);
+        console.log('1on1 ' + is1on1Mode);
+        console.log('group ' + isGroupMode);
+        for (i = 0; i < 16; i++) {
+            randomLettersArray[i] = lettersArray[Math.floor(Math.random()*lettersArray.length)];
+        };
+        if (is1on1Mode || isGroupMode) {
+            setBoard(<StaticBoard array={randomLettersArray} />);
+            console.log('board');
+        }
     }
+    
+    
 
     const toStart = () => {
+        props.navigation.setParams({isSoloMode: false, is1on1Mode: false, isGroupMode: false})
         props.navigation.navigate('Start')
     }
+
+    const tick = () => {
+    
+        let min = Math.floor(time / 60);
+        let sec = time - (min * 60);
+    
+        //add a leading zero (as a string value) if seconds less than 10
+        if (sec < 10) {
+            sec = "0" + sec;
+        }
+
+        if (min === 0 && sec == '00'){
+            console.log('clear');
+            clearInterval(intervally);
+        }
+
+    
+        setTimer(min.toString() + ':' + sec.toString());
+        time--;
+    }
+
+    if(firstRender) {
+        console.log('starting the timer');
+        intervally = setInterval(tick, 1000);
+        setFirstRender(false);
+    }
+
     return (
         <View style={{flex: 1}}>
             <CustomHeader onClick={toStart}>cancel game</CustomHeader>
         <View style={styles.screen}>
             <View style={styles.timerBox}>
                 <Image style={styles.timerImage} source={require('../assets/timer.png')} />
+                <Text style={styles.time}>{timer}</Text>
             </View>
             <View style={styles.boardBox}>
-            <View style={styles.board}>
-                <View style={styles.cubeRow}>
-                    <View style={styles.cube}>
-                        <View style={styles.ring}>
-                            <Text style={styles.letter}>{randomLettersArray[0]}</Text>
-                        </View>
-                    </View>
-                    <View style={styles.cube}>
-                        <View style={styles.ring}>
-                            <Text style={styles.letter}>{randomLettersArray[1]}</Text>
-                        </View>
-                    </View>
-                    <View style={styles.cube}>
-                        <View style={styles.ring}>
-                            <Text style={styles.letter}>{randomLettersArray[2]}</Text>
-                        </View>
-                    </View>
-                    <View style={styles.cube}>
-                        <View style={styles.ring}>
-                            <Text style={styles.letter}>{randomLettersArray[3]}</Text>
-                        </View>
-                    </View>
-                </View>
-                <View style={styles.cubeRow}>
-                    <View style={styles.cube}>
-                        <View style={styles.ring}>
-                            <Text style={styles.letter}>{randomLettersArray[4]}</Text>
-                        </View>
-                    </View>
-                    <View style={styles.cube}>
-                        <View style={styles.ring}>
-                            <Text style={styles.letter}>{randomLettersArray[5]}</Text>
-                        </View>
-                    </View>
-                    <View style={styles.cube}>
-                        <View style={styles.ring}>
-                            <Text style={styles.letter}>{randomLettersArray[6]}</Text>
-                        </View>
-                    </View>
-                    <View style={styles.cube}>
-                        <View style={styles.ring}>
-                            <Text style={styles.letter}>{randomLettersArray[7]}</Text>
-                        </View>
-                    </View>
-                </View>
-                <View style={styles.cubeRow}>
-                    <View style={styles.cube}>
-                        <View style={styles.ring}>
-                            <Text style={styles.letter}>{randomLettersArray[8]}</Text>
-                        </View>
-                    </View>
-                    <View style={styles.cube}>
-                        <View style={styles.ring}>
-                            <Text style={styles.letter}>{randomLettersArray[9]}</Text>
-                        </View>
-                    </View>
-                    <View style={styles.cube}>
-                        <View style={styles.ring}>
-                            <Text style={styles.letter}>{randomLettersArray[10]}</Text>
-                        </View>
-                    </View>
-                    <View style={styles.cube}>
-                        <View style={styles.ring}>
-                            <Text style={styles.letter}>{randomLettersArray[11]}</Text>
-                        </View>
-                    </View>
-                </View>
-                <View style={styles.cubeRow}>
-                    <View style={styles.cube}>
-                        <View style={styles.ring}>
-                            <Text style={styles.letter}>{randomLettersArray[12]}</Text>
-                        </View>
-                    </View>
-                    <View style={styles.cube}>
-                        <View style={styles.ring}>
-                            <Text style={styles.letter}>{randomLettersArray[13]}</Text>
-                        </View>
-                    </View>
-                    <View style={styles.cube}>
-                        <View style={styles.ring}>
-                            <Text style={styles.letter}>{randomLettersArray[14]}</Text>
-                        </View>
-                    </View>
-                    <View style={styles.cube}>
-                        <View style={styles.ring}>
-                            <Text style={styles.letter}>{randomLettersArray[15]}</Text>
-                        </View>
-                    </View>
-                </View>
-            </View>
+                {board}
             </View>
         </View>
         </View>
@@ -127,48 +89,26 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.primary,
     },
     timerBox: {
-        flexDirection: 'row'
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        paddingHorizontal: 20,
     },
     timerImage:{
-        width: 40,
-        height: 40,
+        width: 30,
+        height: 30,
+    },
+    time: {
+        fontSize: 35,
+        color: 'white',
+        marginLeft: 10,
     },
     boardBox: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
     },
-    board: {
-        height: 320,
-        width: 320,
-        borderWidth: 10,
-        borderColor: '#20a3bd',
-        borderRadius: 2,
-        backgroundColor: '#0c6a7d',
-       justifyContent: 'space-evenly',
-    },
-    cubeRow: {
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
-    },
-    cube: {
-        height: 70,
-        width: 70,
-        borderRadius: 3,
-        backgroundColor: '#e3d9d1',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    ring:{
-        height: 60,
-        width: 60,
-        borderRadius: 60/2,
-        backgroundColor: '#ede7e1',
-    },
-    letter: {
-        fontSize: 40,
-        textAlign: 'center',
-    }
+    
 })
 
 export default GameScreen;
