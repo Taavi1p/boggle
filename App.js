@@ -1,5 +1,4 @@
-import React from 'react';
-import { StyleSheet} from 'react-native';
+import React, {useState} from 'react';
 import Navigation from './navigation/Navigator';
 import  * as Font from 'expo-font';
 import { AppLoading } from 'expo';

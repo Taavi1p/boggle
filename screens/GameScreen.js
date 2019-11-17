@@ -5,7 +5,7 @@ import StaticBoard from '../components/StaticBoard';
 import CustomHeader from '../components/CustomHeader';
 import Colors from '../constants/Colors';
 
-const lettersArray = ['a', 'a', 'a', 'a', 'a', 'b', 'c', 'd', 'e', 'e', 'e', 'e', 'e', 'f', 'g', 'g', 'h', 'h', 'i', 'i', 'j', 'k', 'k', 'l', 'l', 'm', 'm', 'm', 'n', 'n', 'o', 'o', 'o', 'p', 'p', 'q', 'r', 'r', 's', 's', 's', 's', 't', 't', 't', 't', 'u', 'u', 'v',  'w', 'y']
+const lettersArray = ['A', 'A', 'A', 'A', 'A', 'B', 'C', 'D', 'E', 'E', 'E', 'E', 'E', 'F', 'G', 'G', 'H', 'H', 'I', 'I', 'J', 'K', 'K', 'L', 'L', 'M', 'M', 'M', 'N', 'N', 'O', 'O', 'O', 'P', 'P', 'Q', 'R', 'R', 'S', 'S', 'S', 'S', 'T', 'T', 'T', 'T', 'U', 'U', 'V', 'W', 'Y']
 
 const GameScreen = props => {
 

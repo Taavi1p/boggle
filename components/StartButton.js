@@ -28,7 +28,8 @@ const styles = StyleSheet.create({
         fontSize: 30,
         color: Colors.primary,
         marginLeft: 'auto',
-        marginRight: 'auto'
+        marginRight: 'auto',
+        fontFamily: 'avenir-heavy'
     }
 })
 

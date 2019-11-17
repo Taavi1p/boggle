@@ -93,8 +93,9 @@ const styles = StyleSheet.create({
         fontSize: 80,
         color: 'white',
         textAlign: 'center',
-        fontWeight: 'bold',
+        fontFamily: 'avenir-heavy',
         marginBottom: 40,
+
     },
     container: {
         width: '100%',
