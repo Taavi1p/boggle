@@ -2,13 +2,15 @@ import { createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 
 import StartScreen from '../screens/StartScreen';
-import GameScreen from '../screens/GameScreen';
+import GroupScreen from '../screens/GroupScreen';
+import OneOnOneScreen from '../screens/OneOnOneScreen';
 import RulesScreen from '../screens/RulesScreen';
 
 
 const Navigator = createStackNavigator({
     Start: StartScreen,
-    Game: GameScreen,
+    GroupMode:  GroupScreen,
+    OneOnOneMode: OneOnOneScreen,
     Rules: RulesScreen,
 },
 {

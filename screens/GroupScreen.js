@@ -5,39 +5,26 @@ import StaticBoard from '../components/StaticBoard';
 import CustomHeader from '../components/CustomHeader';
 import Colors from '../constants/Colors';
 
-const lettersArray = ['A', 'A', 'A', 'A', 'A', 'B', 'C', 'D', 'E', 'E', 'E', 'E', 'E', 'F', 'G', 'G', 'H', 'H', 'I', 'I', 'J', 'K', 'K', 'L', 'L', 'M', 'M', 'M', 'N', 'N', 'O', 'O', 'O', 'P', 'P', 'Q', 'R', 'R', 'S', 'S', 'S', 'S', 'T', 'T', 'T', 'T', 'U', 'U', 'V', 'W', 'Y']
+const lettersArray = [['A', 'A', 'A', 'A', 'A', 'E', 'E', 'E', 'E', 'E', 'O', 'O', 'O','U', 'U', 'I', 'I',], 
+['B', 'C', 'D', 'F', 'G', 'G', 'H', 'H', 'J', 'K', 'K', 'L', 'L', 'M', 'M', 'M', 'N', 'N', 'P', 'P', 'Q', 'R', 
+'R', 'S', 'S', 'S', 'S', 'T', 'T', 'T', 'T', 'V', 'W', 'Y']]
 
 const GameScreen = props => {
 
     const [randomLettersArray, setRandomLettersArray] = useState([]);
-    const isSoloMode = props.navigation.getParam('isSoloMode');
-    const is1on1Mode = props.navigation.getParam('is1on1Mode');
-    const isGroupMode = props.navigation.getParam('isSoloMode');
-    const minutes = props.navigation.getParam('minutes');
-    const [timer, setTimer] = useState('');
+    let time = 120;
+    const [timer, setTimer] = useState();
     const [firstRender, setFirstRender] = useState(true);
 
-    let time = 120;
-    const [board, setBoard] = useState(<Text>board failed to load</Text>);
-
     if (firstRender) {
-        time = minutes * 60;
-        console.log('solo ' + isSoloMode);
-        console.log('1on1 ' + is1on1Mode);
-        console.log('group ' + isGroupMode);
         for (i = 0; i < 16; i++) {
             randomLettersArray[i] = lettersArray[Math.floor(Math.random()*lettersArray.length)];
-        };
-        if (is1on1Mode || isGroupMode) {
-            setBoard(<StaticBoard array={randomLettersArray} />);
-            console.log('board');
         }
     }
     
     
 
     const toStart = () => {
-        props.navigation.setParams({isSoloMode: false, is1on1Mode: false, isGroupMode: false})
         props.navigation.navigate('Start')
     }
 
@@ -73,10 +60,10 @@ const GameScreen = props => {
         <View style={styles.screen}>
             <View style={styles.timerBox}>
                 <Image style={styles.timerImage} source={require('../assets/timer.png')} />
-                <Text style={styles.time}>{timer}</Text>
+                <Text style={styles.time}>{timer ? timer : '2:00'}</Text>
             </View>
             <View style={styles.boardBox}>
-                {board}
+                <StaticBoard array={randomLettersArray} />
             </View>
         </View>
         </View>
@@ -89,10 +76,12 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.primary,
     },
     timerBox: {
+        marginLeft: 'auto',
         flexDirection: 'row',
-        justifyContent: 'flex-end',
+        justifyContent: 'space-between',
         alignItems: 'center',
         paddingHorizontal: 20,
+        width: 150,
     },
     timerImage:{
         width: 30,

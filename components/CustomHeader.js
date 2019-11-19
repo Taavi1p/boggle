@@ -4,7 +4,7 @@ import Colors from '../constants/Colors';
 
 const CustomHeader = props => {
     return (
-        <View style={styles.header}> 
+        <View style={props.noColor ? styles.noColor : styles.header }> 
             <TouchableOpacity onPress={props.onClick} style={styles.backButton}>
                 <Text style={styles.buttonText}>{props.children}</Text>
             </TouchableOpacity>
@@ -21,7 +21,12 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         backgroundColor: Colors.primary,
     },
-    backButton: {
+    noColor: {
+        height: 50,
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'flex-start',
+        paddingHorizontal: 20,
     },
     buttonText: {
         fontSize: 25,

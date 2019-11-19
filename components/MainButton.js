@@ -16,10 +16,13 @@ const MainButton = props => {
 
 const styles = StyleSheet.create({
     container: {
-        margin: 20,
+        margin: 40,
+        shadowColor: 'grey',
+        shadowRadius: 40,
+        shadowOpacity: 0.5,
     },
     button: {
-        backgroundColor: 'white',
+        backgroundColor: '#f0f0f0',
         paddingVertical: 5,
         paddingHorizontal: 20,
         borderRadius: 5,

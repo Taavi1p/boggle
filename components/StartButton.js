@@ -16,8 +16,11 @@ const StartButton = props => {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 10,
+        marginTop: 20,
         width: 250,
+        shadowColor: 'white',
+        shadowRadius: 10,
+        shadowOpacity: 0.9,
     },
     button: {
         backgroundColor: 'white',
