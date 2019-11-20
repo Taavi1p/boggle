@@ -6,19 +6,18 @@ import CustomHeader from '../components/CustomHeader';
 import Colors from '../constants/Colors';
 
 const lettersArray = ['A', 'A', 'A', 'A', 'A', 'B', 'C', 'D', 'E', 'E', 'E', 'E', 'E', 'F', 'G', 'G', 'H', 'H', 'I', 'I', 'J', 'K', 'K', 'L', 'L', 'M', 'M', 'M', 'N', 'N', 'O', 'O', 'O', 'P', 'P', 'Q', 'R', 'R', 'S', 'S', 'S', 'S', 'T', 'T', 'T', 'T', 'U', 'U', 'V', 'W', 'Y']
+let isPurple = false;
 
 const OneOnOneScreen = props => {
 
+    const [is, setIs] = useState(false);
     const [randomLettersArray, setRandomLettersArray] = useState([]);
-    let time = props.navigation.getParam('seconds');
+    let time = 120;
     const [firstRender, setFirstRender] = useState(true);
-    const [firstPlayer, setFirstPlayer] = useState(true);
-    const [secondPlayer, setSecondPlayer] = useState(true);
-    const [haha, setHaha] = useState(true);
 
     const togglePlayer = () => {
-        console.log('works')
-        setHaha(!haha)
+        setIs(!is);
+        isPurple = !isPurple
     }
 
     if (firstRender) {
@@ -28,7 +27,14 @@ const OneOnOneScreen = props => {
     }
 
     const toStart = () => {
-        props.navigation.navigate('Start')
+        clearInterval(intervally)
+        props.navigation.navigate('Start');
+    }
+
+    const toWinner = () => {
+        clearInterval(intervally)
+        console.log('this should be the value ' + isPurple);
+        props.navigation.navigate({routeName: 'Winner', params: {isPurple: isPurple}})
     }
 
     const tick = () => {
@@ -40,9 +46,10 @@ const OneOnOneScreen = props => {
             sec = "0" + sec;
         }
         if (min === 0 && sec == '00'){
-            console.log('clear');
             clearInterval(intervally);
+            toWinner();
         }
+        console.log(time)
         time--;
     }
 
@@ -52,14 +59,15 @@ const OneOnOneScreen = props => {
         setFirstRender(false);
     }
 
+    console.log('--', isPurple)
+
     return (
         <View style={{ flex: 1}}>
             <TouchableWithoutFeedback onPress={togglePlayer} style={{flex: 1}}>
-                <View style={haha ? styles.firstPlayer : styles.secondPlayer}>
+                <View style={isPurple ? styles.firstPlayer : styles.secondPlayer}>
                     <CustomHeader onClick={toStart}>end game</CustomHeader>
                     <View style={styles.screen}>
                         <View style={styles.boardBox}>
-                            {/* <Text style={styles.playerText}>{haha ? 'Player 1' : 'Player 2'}</Text> */}
                             <StaticBoard array={randomLettersArray} />
                         </View>
                         <Text style={styles.clickText}>Click to switch turn</Text>
@@ -93,13 +101,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#009933',
         flex: 1,
     },
-    // playerText: {
-    //     fontSize: 40,
-    //     color: 'white',
-    //     fontFamily: 'avenir-heavy',
-    //     marginBottom: 30,
-    //     marginTop: 'auto'
-    // },
     clickText: {
         fontSize: 25,
         color: 'white',
