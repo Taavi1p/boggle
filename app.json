@@ -6,12 +6,11 @@
     "sdkVersion": "35.0.0",
     "platforms": [
       "ios",
-      "android",
-      "web"
+      "android"
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/letter-b.png",
+    "icon": "./assets/b-ios.png",
     "splash": {
       "image": "./assets/letter-b.png",
       "resizeMode": "contain",
@@ -24,7 +23,13 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false,
+      "bundleIdentifier": "co.boggle.go"
+    },
+    "android": {
+      "versionCode": 1,
+      "package": "co.boggle.go",
+      "permissions": []
     }
   }
 }
