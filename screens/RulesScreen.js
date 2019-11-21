@@ -24,20 +24,20 @@ const RulesScreen = props => {
     </Text>;
     let scoringContent = <View>
         <Text style={styles.rulesText}>The scoring is as follows:</Text>
-        
-        <Text style={styles.rulesText}>Fewer than 3 Letters: no score</Text>
+        <Text style={styles.rulesText}></Text>
+        <Text style={styles.rulesText}>1 or 2 Letters: no score</Text>
         <Text style={styles.rulesText}>3 Letters: 1 point</Text>
         <Text style={styles.rulesText}>4 Letters: 1 point</Text>
         <Text style={styles.rulesText}>5 Letters: 2 points</Text>
         <Text style={styles.rulesText}>6 Letters: 3 points</Text>
         <Text style={styles.rulesText}>7 Letters: 4 points</Text>
         <Text style={styles.rulesText}>8 or More Letters: 11 points</Text>
+        <Text style={styles.rulesText}></Text>
         <Text style={styles.rulesText}>
-        Note: Although the 'Qu' cube occupies a single space in the grid, it counts as two letters for the purpose of scoring.
-
-        Full credit is awarded for both the singular and plural forms of a noun provided you list them as separate words, so cat and cats each score a point. The same is true for all other derived forms (e.g. chew, chews, chewed, etc.).
-
-        Any dictionary word is allowed. As in most word games, you will not receive credit for proper names, abbreviations, contractions, hyphenated words, or foreign words that are not in an English dictionary. You will be penalised 1 point for each guess you make that is not recognised as a valid word.
+    
+        Full credit is awarded for both the singular and plural forms of a noun provided you list them as separate words. The same is true for all other derived forms (e.g. chew, chews, chewed, etc.).</Text>
+        <Text style={styles.rulesText}></Text>
+        <Text style={styles.rulesText}>you will not receive credit for proper names, abbreviations, contractions, hyphenated words, or foreign words that are not in an English dictionary. You will be penalised 1 point for each guess you make that is not recognised as a valid word.
         </Text></View> ;
     let oneOnOneContent = <Text style={styles.rulesText}>In one-on-one mode two players take turns saying a word. The clock hiddenly 
                             runs on the background, if the clock runs out on your turn you lose</Text>;

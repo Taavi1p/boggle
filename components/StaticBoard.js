@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { StyleSheet, Text, View} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
-const lettersArray = ['A', 'A', 'A', 'A', 'A', 'E', 'E', 'E', 'O', 'U', 'I', 'B', 'C', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'M', 'M', 'N', 'N', 'P', 'P', 'P', 'R', 'S', 'S', 'S', 'T', 'T', 'T', 'T', 'V', 'W', 'Y']
+const lettersArray = ['A', 'A', 'A', 'A', 'A', 'E', 'E', 'E', 'O', 'U', 'I', 'B', 'C', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'M', 'M', 'N', 'N', 'P', 'P', 'P', 'R', 'S', 'S', 'S', 'S', 'T', 'T', 'T', 'V', 'W', 'Y']
 const vowels = ['A', 'E', 'O', 'U', 'I'];
 const kaas = ['B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Qu', 'R', 'S', 'T', 'V', 'W', 'Y'];
 
@@ -17,11 +17,9 @@ const StaticBoard = props => {
             for( j = 0; j < randomLettersArray.length; ++j){
                 if(randomLettersArray[j] == randomLetter){
                     count++;
-                    console.log('found the same letter in the array');
                 }
             }
             if (count < 3){
-                console.log('otsin seda ' + randomLetter)
                 if (vowels.includes(randomLetter)){
                     let countV = 0;
                     for( e = 0; e < randomLettersArray.length; ++e){
@@ -29,10 +27,8 @@ const StaticBoard = props => {
                             countV++;
                         }
                     }
-                    console.log('thats how many vowels there was' + countV)
                     if (countV < 7) {
                         randomLettersArray[i] = randomLetter;
-                        console.log('adding a vowel');
                         i++;
                     }   
                 }
@@ -43,10 +39,8 @@ const StaticBoard = props => {
                         if(kaas.includes(randomLettersArray[y]))
                             countC++;
                     }
-                    console.log('thats how many kaashäälikuid there was' + countC)
                     if (countC < 11) {
                         randomLettersArray[i] = randomLetter;
-                        console.log('adding a kaashäälik');
                         i++;
                     }
                 }
@@ -189,7 +183,7 @@ const styles = StyleSheet.create({
         width: 320,
         borderWidth: 10,
         borderColor: '#20a3bd',
-        borderRadius: 2,
+        borderRadius: 5,
         backgroundColor: '#0c6a7d',
        justifyContent: 'space-evenly',
     },

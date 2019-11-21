@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {StyleSheet, View, Text, TouchableWithoutFeedback} from 'react-native';
+import {StyleSheet, View, Text, TouchableWithoutFeedback, ImageBackground} from 'react-native';
 
 import StaticBoard from '../components/StaticBoard';
 import CustomHeader from '../components/CustomHeader';
@@ -11,7 +11,7 @@ let firstRender = true;
 const OneOnOneScreen = props => {
 
     const [is, setIs] = useState(false);
-    let time = 10;
+    let time = 120;
 
     const togglePlayer = () => {
         setIs(!is);
@@ -20,12 +20,13 @@ const OneOnOneScreen = props => {
 
     const toStart = () => {
         clearInterval(intervally)
+        time = 120;
+        firstRender = true;
         props.navigation.navigate('Start');
     }
 
     const toWinner = () => {
         clearInterval(intervally);
-        time = 10;
         firstRender = true;
         console.log(firstRender)
         props.navigation.navigate({routeName: 'Winner', params: {isPurple: isPurple}})
@@ -58,9 +59,10 @@ const OneOnOneScreen = props => {
 
     return (
         <View style={{ flex: 1}}>
+            <ImageBackground source={isPurple ? require('../assets/small-green-background.jpg') : require('../assets/small-purple-background.jpg')} style={{width: '100%', height: '100%'}} >
             <TouchableWithoutFeedback onPress={togglePlayer} style={{flex: 1}}>
-                <View style={isPurple ? styles.firstPlayer : styles.secondPlayer}>
-                    <CustomHeader onClick={toStart}>end game</CustomHeader>
+                <View style={{flex: 1}}>
+                    <CustomHeader noColor={true} onClick={toStart}>end game</CustomHeader>
                     <View style={styles.screen}>
                         <View style={styles.boardBox}>
                             <StaticBoard />
@@ -69,6 +71,7 @@ const OneOnOneScreen = props => {
                     </View>
                 </View>
             </TouchableWithoutFeedback>
+            </ImageBackground>
         </View>
     )
 }
@@ -87,14 +90,6 @@ const styles = StyleSheet.create({
         height: '100%',
         padding: 10,
         backgroundColor: Colors.primary,
-    },
-    firstPlayer: {
-        backgroundColor: 'purple',
-        flex: 1,
-    },
-    secondPlayer: {
-        backgroundColor: '#009933',
-        flex: 1,
     },
     clickText: {
         fontSize: 25,

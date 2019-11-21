@@ -1,6 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {StyleSheet, View, Text, Image} from 'react-native';
-import Sound from 'react-native-sound';
+import React, {useState} from 'react';
+import {StyleSheet, View, Text, Image, ImageBackground} from 'react-native';
 
 import StaticBoard from '../components/StaticBoard';
 import CustomHeader from '../components/CustomHeader';
@@ -8,11 +7,10 @@ import Colors from '../constants/Colors';
 
 const GameScreen = props => {
 
-    let time = 120;
+    let time = 180;
     const [timer, setTimer] = useState();
     const [firstRender, setFirstRender] = useState(true);
 
-    sound = new Sound('success-sound.wav');
 
     const toStart = () => {
         clearInterval(intervally);
@@ -47,16 +45,18 @@ const GameScreen = props => {
 
     return (
         <View style={{flex: 1}}>
-            <CustomHeader onClick={toStart}>cancel game</CustomHeader>
+             <ImageBackground source={require('../assets/background.jpg')} style={{width: '100%', height: '100%'}}>
+            <CustomHeader noColor={true} onClick={toStart}>end game</CustomHeader>
         <View style={styles.screen}>
             <View style={styles.timerBox}>
                 <Image style={styles.timerImage} source={require('../assets/timer.png')} />
-                <Text style={styles.time}>{timer ? timer : '2:00'}</Text>
+                <Text style={styles.time}>{timer ? timer : '3:00'}</Text>
             </View>
             <View style={styles.boardBox}>
                 <StaticBoard />
             </View>
         </View>
+        </ImageBackground>
         </View>
     )
 }
@@ -64,7 +64,6 @@ const GameScreen = props => {
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
-        backgroundColor: Colors.primary,
     },
     timerBox: {
         marginLeft: 'auto',
