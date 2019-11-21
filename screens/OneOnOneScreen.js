@@ -5,25 +5,17 @@ import StaticBoard from '../components/StaticBoard';
 import CustomHeader from '../components/CustomHeader';
 import Colors from '../constants/Colors';
 
-const lettersArray = ['A', 'A', 'A', 'A', 'A', 'B', 'C', 'D', 'E', 'E', 'E', 'E', 'E', 'F', 'G', 'G', 'H', 'H', 'I', 'I', 'J', 'K', 'K', 'L', 'L', 'M', 'M', 'M', 'N', 'N', 'O', 'O', 'O', 'P', 'P', 'Q', 'R', 'R', 'S', 'S', 'S', 'S', 'T', 'T', 'T', 'T', 'U', 'U', 'V', 'W', 'Y']
 let isPurple = false;
+let firstRender = true;
 
 const OneOnOneScreen = props => {
 
     const [is, setIs] = useState(false);
-    const [randomLettersArray, setRandomLettersArray] = useState([]);
-    let time = 120;
-    const [firstRender, setFirstRender] = useState(true);
+    let time = 10;
 
     const togglePlayer = () => {
         setIs(!is);
         isPurple = !isPurple
-    }
-
-    if (firstRender) {
-        for (i = 0; i < 16; i++) {
-            randomLettersArray[i] = lettersArray[Math.floor(Math.random()*lettersArray.length)];
-        }
     }
 
     const toStart = () => {
@@ -32,8 +24,10 @@ const OneOnOneScreen = props => {
     }
 
     const toWinner = () => {
-        clearInterval(intervally)
-        console.log('this should be the value ' + isPurple);
+        clearInterval(intervally);
+        time = 10;
+        firstRender = true;
+        console.log(firstRender)
         props.navigation.navigate({routeName: 'Winner', params: {isPurple: isPurple}})
     }
 
@@ -56,7 +50,8 @@ const OneOnOneScreen = props => {
     if(firstRender) {
         console.log('starting the timer');
         intervally = setInterval(tick, 1000);
-        setFirstRender(false);
+        firstRender = false;
+        console.log('action');
     }
 
     console.log('--', isPurple)
@@ -68,7 +63,7 @@ const OneOnOneScreen = props => {
                     <CustomHeader onClick={toStart}>end game</CustomHeader>
                     <View style={styles.screen}>
                         <View style={styles.boardBox}>
-                            <StaticBoard array={randomLettersArray} />
+                            <StaticBoard />
                         </View>
                         <Text style={styles.clickText}>Click to switch turn</Text>
                     </View>

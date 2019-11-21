@@ -9,8 +9,8 @@ const WinnerScreen = props => {
         props.navigation.navigate('Start')
     }
 
-    const toNewGame = props => {
-        props.navigation.navigate('onOnOneMode')
+    const toNewGame = () => {
+        props.navigation.navigate('OneOnOneMode')
     }
     console.log('the answer is' + isPurple)
 
