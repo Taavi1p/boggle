@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, Text, TouchableOpacity} from 'react-native';
+import {StyleSheet, View, Text, TouchableOpacity, ImageBackground} from 'react-native';
 
 const WinnerScreen = props => {
 
@@ -16,17 +16,19 @@ const WinnerScreen = props => {
 
     return (
         <View style={ isPurple ? styles.screen : styles.greenScreen}>
-            <Text style={styles.title}>{ isPurple ? 'Purple wins' : 'Green wins' }</Text>
-            <TouchableOpacity onPress={toNewGame}>
-                <View style={styles.biggerButton}>
-                    <Text style={isPurple ? styles.biggerText : styles.greenBiggerText}>play again</Text>
-                </View>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={toMenu}>
-                <View style={styles.smallerButton}>
-                    <Text style={ isPurple ? styles.smallerText : styles.greenSmallerText}>menu</Text>
-                </View>
-            </TouchableOpacity>
+            <ImageBackground source={isPurple ? require('../assets/small-purple-background.jpg') : require('../assets/small-green-background.jpg')} style={styles.image}>
+                <Text style={styles.title}>{ isPurple ? 'Purple wins' : 'Green wins' }</Text>
+                <TouchableOpacity onPress={toNewGame}>
+                    <View style={styles.biggerButton}>
+                        <Text style={isPurple ? styles.biggerText : styles.greenBiggerText}>play again</Text>
+                    </View>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={toMenu}>
+                    <View style={styles.smallerButton}>
+                        <Text style={ isPurple ? styles.smallerText : styles.greenSmallerText}>menu</Text>
+                    </View>
+                </TouchableOpacity>
+            </ImageBackground>
         </View>
     )
 }
@@ -34,13 +36,15 @@ const WinnerScreen = props => {
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
-        backgroundColor: 'purple',
-        alignItems: 'center',
-        justifyContent: 'center'
+        backgroundColor: '#954ecf',
     },
     greenScreen: {
         flex: 1,
-        backgroundColor: '#009933',
+        backgroundColor: '#59bd73',
+    },
+    image: {
+        height: '100%',
+        width: '100%',
         alignItems: 'center',
         justifyContent: 'center'
     },
@@ -58,12 +62,12 @@ const styles = StyleSheet.create({
         marginVertical: 20
     },
     biggerText: {
-        color: 'purple',
+        color: '#954ecf',
         fontSize: 40,
         fontFamily: 'avenir-heavy',
     },
     greenBiggerText: {
-        color: '#009933',
+        color: '#59bd73',
         fontSize: 40,
         fontFamily: 'avenir-heavy',
     },
@@ -75,12 +79,12 @@ const styles = StyleSheet.create({
         marginVertical: 10
     },
     smallerText: {
-        color: 'purple',
+        color: '#954ecf',
         fontSize: 30,
         fontFamily: 'avenir-heavy',
     },
     greenSmallerText: {
-        color: '#009933',
+        color: '#59bd73',
         fontSize: 30,
         fontFamily: 'avenir-heavy',
     }
