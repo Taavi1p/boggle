@@ -9,6 +9,6 @@ Different game modes:
 
 ## Live
 
-App store - https://apps.apple.com/us/app/id1488800386
+App Store - https://apps.apple.com/us/app/id1488800386
 
-Google play- Soon
+Google Play- Soon
