@@ -7,7 +7,7 @@ import Colors from '../constants/Colors';
 
 let isPurple = false;
 let firstRender = true;
-const possibleTimes = [60, 90, 120];
+const possibleTimes = [ 90, 120];
 
 const OneOnOneScreen = props => {
 

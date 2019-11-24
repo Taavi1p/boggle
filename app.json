@@ -8,7 +8,7 @@
       "ios",
       "android"
     ],
-    "version": "1.0.0",
+    "version": "1.1.0",
     "orientation": "portrait",
     "icon": "./assets/b-ios.png",
     "splash": {
@@ -23,11 +23,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": false,
+      "supportsTablet": true,
       "bundleIdentifier": "co.boggle.go"
     },
     "android": {
-      "versionCode": 1,
+      "versionCode": 2,
       "package": "co.boggle.go",
       "permissions": []
     }
