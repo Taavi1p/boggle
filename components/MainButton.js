@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
         shadowColor: 'grey',
         shadowRadius: 40,
         shadowOpacity: 0.5,
+        elevation: 5
     },
     button: {
         backgroundColor: '#f0f0f0',

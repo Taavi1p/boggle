@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {StyleSheet, View, Text, TouchableOpacity, Image, ScrollView} from 'react-native';
+import {StyleSheet, View, Text, TouchableOpacity, Image, ScrollView, ImageBackground} from 'react-native';
 import Colors from '../constants/Colors';
 import CustomHeader from '../components/CustomHeader';
 
@@ -25,23 +25,20 @@ const RulesScreen = props => {
     let scoringContent = <View>
         <Text style={styles.rulesText}>The scoring is as follows:</Text>
         <Text style={styles.rulesText}></Text>
-        <Text style={styles.rulesText}>1 or 2 Letters: no score</Text>
-        <Text style={styles.rulesText}>3 Letters: 1 point</Text>
-        <Text style={styles.rulesText}>4 Letters: 1 point</Text>
-        <Text style={styles.rulesText}>5 Letters: 2 points</Text>
-        <Text style={styles.rulesText}>6 Letters: 3 points</Text>
-        <Text style={styles.rulesText}>7 Letters: 4 points</Text>
-        <Text style={styles.rulesText}>8 or More Letters: 11 points</Text>
+        <Text style={styles.rulesText}>1 Letter: 1 point</Text>
+        <Text style={styles.rulesText}>2 Letters: 1 point</Text>
+        <Text style={styles.rulesText}>3 Letters: 2 point</Text>
+        <Text style={styles.rulesText}>4 Letters: 3 point</Text>
+        <Text style={styles.rulesText}>5 Letters: 4 points</Text>
+        <Text style={styles.rulesText}>6 Letters: 5 points</Text>
+        <Text style={styles.rulesText}>7 Letters: 6 points</Text>
+        <Text style={styles.rulesText}>8 or More Letters: 13 points</Text>
         <Text style={styles.rulesText}></Text>
-        <Text style={styles.rulesText}>
-    
-        Full credit is awarded for both the singular and plural forms of a noun provided you list them as separate words. The same is true for all other derived forms (e.g. chew, chews, chewed, etc.).</Text>
-        <Text style={styles.rulesText}></Text>
-        <Text style={styles.rulesText}>you will not receive credit for proper names, abbreviations, contractions, hyphenated words, or foreign words that are not in an English dictionary. You will be penalised 1 point for each guess you make that is not recognised as a valid word.
-        </Text></View> ;
+        
+        </View> ;
     let oneOnOneContent = <Text style={styles.rulesText}>In one-on-one mode two players take turns saying a word. The clock hiddenly 
                             runs on the background, if the clock runs out on your turn you lose</Text>;
-    let groupContent = <Text style={styles.rulesText}>The group game mode can be played with any number of players. Every players should have a piece of paper or a phone or anywhere to write down his words.
+    let groupContent = <Text style={styles.rulesText}>The group game mode can be played with any number of players. Every player should have a piece of paper or anywhere to write down their words.
                         when the game starts everyone starts silently writing down words. When the time is up every player counts their score and the player with the most points wins.   </Text>
     let nothing = <View></View>;
 
@@ -59,8 +56,8 @@ const RulesScreen = props => {
     }
 
     return(
-        <View style={{flex: 1, backgroundColor: Colors.primary}}>
-            <CustomHeader onClick={toStart}>Back</CustomHeader>
+        <ImageBackground source={require('../assets/background.jpg')} style={styles.image}>
+            <CustomHeader noColor={true} onClick={toStart}>Back</CustomHeader>
             <ScrollView>
             <View style={styles.screen} >
                 <View style={styles.container}>
@@ -109,12 +106,16 @@ const RulesScreen = props => {
                 </View>
             </View>
             </ScrollView>
-        </View>
+        </ImageBackground>
     )
 }
 
 
 const styles = StyleSheet.create({
+    image: {
+        height: '100%',
+        width: '100%',
+    },
     screen: {
         padding: 10,
     },

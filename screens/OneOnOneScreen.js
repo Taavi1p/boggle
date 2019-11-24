@@ -7,11 +7,13 @@ import Colors from '../constants/Colors';
 
 let isPurple = false;
 let firstRender = true;
+const possibleTimes = [60, 90, 120];
 
 const OneOnOneScreen = props => {
 
     const [is, setIs] = useState(false);
-    let time = 120;
+    const randomTime = possibleTimes[Math.floor(Math.random()*possibleTimes.length)];
+    let time = randomTime;
 
     const togglePlayer = () => {
         setIs(!is);
@@ -20,7 +22,7 @@ const OneOnOneScreen = props => {
 
     const toStart = () => {
         clearInterval(intervally)
-        time = 120;
+        time = randomTime;
         firstRender = true;
         props.navigation.navigate('Start');
     }

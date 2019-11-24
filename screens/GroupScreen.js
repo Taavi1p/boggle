@@ -43,6 +43,8 @@ const GameScreen = props => {
         setFirstRender(false);
     }
 
+    let GameOver = <Text style={styles.timesUp}>Time's up!</Text>
+
     return (
         <View style={{flex: 1}}>
              <ImageBackground source={require('../assets/background.jpg')} style={{width: '100%', height: '100%'}}>
@@ -55,6 +57,7 @@ const GameScreen = props => {
             <View style={styles.boardBox}>
                 <StaticBoard />
             </View>
+            <View style={styles.blankBox}></View>
         </View>
         </ImageBackground>
         </View>
@@ -64,6 +67,14 @@ const GameScreen = props => {
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
+    },
+    timesUp: {
+        color: 'white',
+        fontSize: 30,
+        fontFamily: 'avenir-heavy',
+        textAlign: 'center',
+        marginTop: 'auto',
+        marginBottom: 40
     },
     timerBox: {
         marginLeft: 'auto',
@@ -83,11 +94,14 @@ const styles = StyleSheet.create({
         marginLeft: 10,
     },
     boardBox: {
-        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+        flex: 1
     },
-    
+    blankBox: {
+        width: '100%',
+        height: 35
+    },
 })
 
 export default GameScreen;
