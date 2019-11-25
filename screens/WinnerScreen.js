@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     title: {
-        fontSize: 55,
+        fontSize: 45,
         color: 'white',
         fontFamily: 'avenir-heavy',
         marginBottom: 70

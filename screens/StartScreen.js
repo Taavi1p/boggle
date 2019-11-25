@@ -51,10 +51,10 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        padding: 30,
+        paddingVertical: 30
     },
     title: {
-        fontSize: 80,
+        fontSize: 75,
         color: 'white',
         textAlign: 'center',
         fontFamily: 'avenir-heavy',

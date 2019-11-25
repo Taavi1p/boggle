@@ -213,7 +213,6 @@ const styles = StyleSheet.create({
     letter: {
         fontSize: 42,
         textAlign: 'center',
-        fontWeight: 'bold',
         fontFamily: 'avenir-heavy'
     }
 })

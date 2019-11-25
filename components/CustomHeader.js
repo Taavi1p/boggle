@@ -14,19 +14,20 @@ const CustomHeader = props => {
 
 const styles = StyleSheet.create({
     header: {
-        height: 50,
         width: '100%',
         justifyContent: 'center',
         alignItems: 'flex-start',
         paddingHorizontal: 20,
         backgroundColor: Colors.primary,
+        paddingTop: 20,
+
     },
     noColor: {
-        height: 50,
         width: '100%',
         justifyContent: 'center',
         alignItems: 'flex-start',
         paddingHorizontal: 20,
+        paddingTop: 20
     },
     buttonText: {
         fontSize: 25,
