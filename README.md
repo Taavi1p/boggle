@@ -11,4 +11,4 @@ Different game modes:
 
 App Store - https://apps.apple.com/us/app/id1488800386
 
-Google Play- Soon
+Google Play- https://play.google.com/store/apps/details?hl=en_US&id=co.boggle.go
