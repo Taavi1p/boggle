@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 const lettersArray = ['A', 'A', 'A', 'A', 'A', 'E', 'E', 'E', 'O', 'U', 'I', 'B', 'C', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'M', 'M', 'N', 'N', 'P', 'P', 'P', 'R', 'S', 'S', 'S', 'S', 'T', 'T', 'T', 'V', 'W', 'Y']
@@ -10,48 +10,49 @@ const StaticBoard = props => {
     const [randomLettersArray, setRandomLettersArray] = useState([]);
     const [firstRender, setFirstRender] = useState(true);
     const [guessArray, setGuessArray] = useState([]);
+    const [score, setScore] = useState(0);
 
-    // if (firstRender) {
-    //     for (i = 0; randomLettersArray.length < 16;) {
-    //         let count = 0;
-    //         let randomLetter = lettersArray[Math.floor(Math.random() * lettersArray.length)];
-    //         for (j = 0; j < randomLettersArray.length; ++j) {
-    //             if (randomLettersArray[j] == randomLetter) {
-    //                 count++;
-    //             }
-    //         }
-    //         if (count < 3) {
-    //             if (vowels.includes(randomLetter)) {
-    //                 let countV = 0;
-    //                 for (e = 0; e < randomLettersArray.length; ++e) {
-    //                     if (vowels.includes(randomLettersArray[e])) {
-    //                         countV++;
-    //                     }
-    //                 }
-    //                 if (countV < 7) {
-    //                     randomLettersArray[i] = randomLetter;
-    //                     i++;
-    //                 }
-    //             }
+    if (firstRender) {
+        for (i = 0; randomLettersArray.length < 16;) {
+            let count = 0;
+            let randomLetter = lettersArray[Math.floor(Math.random() * lettersArray.length)];
+            for (j = 0; j < randomLettersArray.length; ++j) {
+                if (randomLettersArray[j] == randomLetter) {
+                    count++;
+                }
+            }
+            if (count < 3) {
+                if (vowels.includes(randomLetter)) {
+                    let countV = 0;
+                    for (e = 0; e < randomLettersArray.length; ++e) {
+                        if (vowels.includes(randomLettersArray[e])) {
+                            countV++;
+                        }
+                    }
+                    if (countV < 7) {
+                        randomLettersArray[i] = randomLetter;
+                        i++;
+                    }
+                }
 
-    //             else if (kaas.includes(randomLetter)) {
-    //                 let countC = 0;
-    //                 for (y = 0; y < randomLettersArray.length; ++y) {
-    //                     if (kaas.includes(randomLettersArray[y]))
-    //                         countC++;
-    //                 }
-    //                 if (countC < 11) {
-    //                     randomLettersArray[i] = randomLetter;
-    //                     i++;
-    //                 }
-    //             }
-    //         }
-    //         count = 0;
-    //         countC = 0;
-    //         countV = 0;
-    //     }
-    //     setFirstRender(false);
-    // }
+                else if (kaas.includes(randomLetter)) {
+                    let countC = 0;
+                    for (y = 0; y < randomLettersArray.length; ++y) {
+                        if (kaas.includes(randomLettersArray[y]))
+                            countC++;
+                    }
+                    if (countC < 11) {
+                        randomLettersArray[i] = randomLetter;
+                        i++;
+                    }
+                }
+            }
+            count = 0;
+            countC = 0;
+            countV = 0;
+        }
+        setFirstRender(false);
+    }
 
 
     const clickOnTile = letter => {
@@ -62,8 +63,16 @@ const StaticBoard = props => {
         setGuessArray([]);
     }
 
+    const submitWord = () => {
+        //check word npm
+        //add score
+    }
+
     return (
         <View>
+            <View>
+                <Text>{score}</Text>
+            </View>
             <View style={styles.board}>
                 <View style={styles.cubeRow}>
                     <TouchableOpacity onPress={() => { clickOnTile(randomLettersArray[0]) }}>
@@ -220,11 +229,11 @@ const StaticBoard = props => {
             </View>
 
             <View style={styles.guessContainer}>
-                <TouchableOpacity style={styles.decline}>
+                <TouchableOpacity onPress={emptyArray} style={styles.decline}>
                     <Image style={styles.image} source={require('../assets/decline.png')} />
                 </TouchableOpacity>
-                <Text style={styles.guessText}>{guessArray}</Text>
-                <TouchableOpacity style={styles.accept}>
+                <View><Text style={styles.guessText}>{guessArray}</Text></View>
+                <TouchableOpacity onPress={submitWord} style={styles.accept}>
                     <Image style={styles.image} source={require('../assets/checkmark.png')} />
                 </TouchableOpacity>
             </View>
@@ -273,17 +282,18 @@ const styles = StyleSheet.create({
     guessContainer: {
         width: '100%',
         flexDirection: 'row',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        marginTop: 20
     },
     decline: {
-
+        marginRight: 10
     },
     guessText: {
         fontSize: 30,
         color: 'white'
     },
     accept: {
-
+        marginLeft: 10
     },
     image: {
         height: 30,

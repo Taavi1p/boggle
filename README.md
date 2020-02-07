@@ -1,6 +1,6 @@
 # boggle
 
-A game made with react-native
+Fun word made with react-native
 
 Different game modes:
 - 1-on-1

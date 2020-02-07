@@ -10,24 +10,17 @@ const StartScreen = props => {
     const seconds = minutes * 60;
 
     const toOneOnOneMode = () => {
-        props.navigation.navigate('OneOnOneMode', {seconds: seconds})
+        props.navigation.navigate('OneOnOneMode')
     }
     const toGroupMode = () => {
-        props.navigation.navigate('GroupMode', {seconds: seconds})
+        props.navigation.navigate('GroupMode')
     }
     const toRules = () => {
         props.navigation.navigate('Rules')
     }
 
-    const addMins = () => {
-        if (minutes < 10) {
-            setMinutes(minutes + 1)
-        }
-    }
-    const subMins = () => {
-        if (minutes >= 2) {
-            setMinutes(minutes - 1)
-        }
+    const toSoloMode = () => {
+        props.navigation.navigate('Solo')
     }
 
     return (
@@ -36,6 +29,7 @@ const StartScreen = props => {
         <View style={styles.screen}>
                 <Text style={styles.title}>Boggle</Text>
                 <View style={styles.buttons}>
+                    <StartButton onClick={toSoloMode}>SOLO MODE</StartButton>
                     <StartButton onClick={toOneOnOneMode}>1-ON-1 MODE</StartButton>
                     <StartButton onClick={toGroupMode}>GROUP MODE</StartButton>
                 </View>
