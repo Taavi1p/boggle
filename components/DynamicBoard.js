@@ -6,7 +6,7 @@ const lettersArray = ['A', 'A', 'A', 'A', 'A', 'E', 'E', 'E', 'O', 'U', 'I', 'B'
 const vowels = ['A', 'E', 'O', 'U', 'I'];
 const kaas = ['B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Qu', 'R', 'S', 'T', 'V', 'W', 'Y'];
 
-const StaticBoard = props => {
+const DynamicBoard = props => {
     const [randomLettersArray, setRandomLettersArray] = useState([]);
     const [firstRender, setFirstRender] = useState(true);
     const [guessArray, setGuessArray] = useState([]);
@@ -70,9 +70,6 @@ const StaticBoard = props => {
 
     return (
         <View>
-            <View>
-                <Text>{score}</Text>
-            </View>
             <View style={styles.board}>
                 <View style={styles.cubeRow}>
                     <TouchableOpacity onPress={() => { clickOnTile(randomLettersArray[0]) }}>
@@ -232,7 +229,7 @@ const StaticBoard = props => {
                 <TouchableOpacity onPress={emptyArray} style={styles.decline}>
                     <Image style={styles.image} source={require('../assets/decline.png')} />
                 </TouchableOpacity>
-                <View><Text style={styles.guessText}>{guessArray}</Text></View>
+                <View style={styles.guessBox}><Text style={styles.guessText}>{guessArray}</Text></View>
                 <TouchableOpacity onPress={submitWord} style={styles.accept}>
                     <Image style={styles.image} source={require('../assets/checkmark.png')} />
                 </TouchableOpacity>
@@ -282,15 +279,24 @@ const styles = StyleSheet.create({
     guessContainer: {
         width: '100%',
         flexDirection: 'row',
-        justifyContent: 'center',
-        marginTop: 20
+        marginTop: 20,
+        marginLeft: 'auto',
+        marginRight: 'auto',
     },
     decline: {
         marginRight: 10
     },
+    guessBox: {
+        backgroundColor: 'black',
+        width: 200,
+        height: 40,
+        borderRadius: 7,
+        opacity: 0.2,
+        paddingHorizontal: 5,
+    },
     guessText: {
         fontSize: 30,
-        color: 'white'
+        color: 'white',
     },
     accept: {
         marginLeft: 10
@@ -299,7 +305,6 @@ const styles = StyleSheet.create({
         height: 30,
         width: 30
     }
-
 })
 
-export default StaticBoard;
+export default DynamicBoard;

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {StyleSheet, View, Text, Button, TouchableOpacity, ImageBackground} from 'react-native';
+import {StyleSheet, View, Text, ImageBackground} from 'react-native';
 import Colors from '../constants/Colors';
 import StartButton from '../components/StartButton';
 import MainButton from '../components/MainButton';
@@ -29,9 +29,15 @@ const StartScreen = props => {
         <View style={styles.screen}>
                 <Text style={styles.title}>Boggle</Text>
                 <View style={styles.buttons}>
-                    <StartButton onClick={toSoloMode}>SOLO MODE</StartButton>
-                    <StartButton onClick={toOneOnOneMode}>1-ON-1 MODE</StartButton>
-                    <StartButton onClick={toGroupMode}>GROUP MODE</StartButton>
+                    <View style={styles.buttonBox}>
+                        <StartButton style={styles.purple} onClick={toSoloMode}>SOLO MODE</StartButton>
+                    </View>
+                    <View style={styles.buttonBox}>
+                        <StartButton style={styles.green} onClick={toOneOnOneMode}>1-ON-1 MODE</StartButton>
+                    </View>
+                    <View style={styles.buttonBox}>
+                        <StartButton style={styles.red} onClick={toGroupMode}>GROUP MODE</StartButton>
+                    </View>
                 </View>
                 <MainButton onClick={toRules}>RULES</MainButton>
                 </View>
@@ -52,8 +58,6 @@ const styles = StyleSheet.create({
         color: 'white',
         textAlign: 'center',
         fontFamily: 'avenir-heavy',
-        marginBottom: '20%',
-
     },
     container: {
         width: '100%',
@@ -73,8 +77,26 @@ const styles = StyleSheet.create({
         fontSize: 30,
         color: 'white'
     },
-    startButton: {
-        marginTop: 50,
+    green: {
+        backgroundColor: '#3399ff',
+        borderColor: '#0066ff',
+    },
+    red: {
+        backgroundColor: '#33cc33',
+        borderColor: '#009933'
+    },
+    purple: {
+        backgroundColor: '#9966ff',
+        borderColor: '#9933ff',
+    },
+    buttonBox: {
+        height: 60,
+        flexDirection: 'row',
+        marginTop: 20,
+    },
+    dummy: {
+        height: 1,
+        width: 30,
     },
     image: {
         height: 20,

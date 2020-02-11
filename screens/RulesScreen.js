@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     },
     container: {
         width: '100%',
-        borderRadius: 20,
+        borderRadius: 10,
         overflow: 'hidden',
         marginTop: 30,
     },
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
     },
     headerText: {
-        fontSize: 30,
+        fontSize: 25,
         color: 'white'
     },
     arrow: {

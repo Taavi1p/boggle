@@ -7,6 +7,7 @@ import OneOnOneScreen from '../screens/OneOnOneScreen';
 import RulesScreen from '../screens/RulesScreen';
 import WinnerScreen from '../screens/WinnerScreen';
 import SoloScreen from '../screens/SoloScreen';
+import TimeOverScreen from '../screens/TimeOverScreen';
 
 
 const Navigator = createStackNavigator({
@@ -16,6 +17,7 @@ const Navigator = createStackNavigator({
     OneOnOneMode: OneOnOneScreen,
     Rules: RulesScreen,
     Winner: WinnerScreen,
+    TimeOver: TimeOverScreen,
 },
 {
     defaultNavigationOptions: {

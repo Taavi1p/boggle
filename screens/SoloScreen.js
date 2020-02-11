@@ -6,14 +6,19 @@ import DynamicBoard from '../components/DynamicBoard';
 
 const SoloScreen = props => {
 
-    let time = 180;
+    let score = 0;
+    let time = 10;
     const [timer, setTimer] = useState();
     const [firstRender, setFirstRender] = useState(true);
-
 
     const toStart = () => {
         clearInterval(intervally);
         props.navigation.navigate('Start')
+    }
+
+    const toTimeOver = () => {
+        clearInterval(intervally);
+        props.navigation.navigate({routeName: 'TimeOver', params: {score: score}})
     }
 
     const tick = () => {
@@ -26,8 +31,8 @@ const SoloScreen = props => {
         }
 
         if (min === 0 && sec == '00'){
-            console.log('clear');
             clearInterval(intervally);
+            toTimeOver();
         }
 
     
@@ -47,6 +52,9 @@ const SoloScreen = props => {
             <View style={styles.timerBox}>
                 <Image style={styles.timerImage} source={require('../assets/timer.png')} />
                 <Text style={styles.time}>{timer ? timer : '3:00'}</Text>
+            </View>
+            <View style={styles.scoreBox}>
+                <Text style={styles.score}>{score}</Text>
             </View>
             <View style={styles.boardBox}>
                 <DynamicBoard />
@@ -78,6 +86,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flex: 1
     },
+    scoreBox: {
+        alignItems: 'center',
+    },
+    score: {
+        color: 'white',
+        fontSize: 70,
+    }
 })
 
 export default SoloScreen;

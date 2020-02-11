@@ -4,19 +4,18 @@ import Colors from '../constants/Colors';
 
 const StartButton = props => {
     return (
-        <View style={styles.container}>
-        <TouchableOpacity onPress={props.onClick}>
-            <View style={styles.button}>
-                <Text style={styles.text}>{props.children}</Text>
-            </View>
-        </TouchableOpacity>
-    </View>
+             <TouchableOpacity onPress={props.onClick}>
+                    <View style={styles.container}>
+                        <View style={{...styles.button, ...props.style}}>
+                            <Text style={styles.text}>{props.children}</Text>
+                        </View>
+                    </View>
+            </TouchableOpacity>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 20,
         width: 250,
         shadowColor: 'white',
         shadowRadius: 10,
@@ -25,15 +24,21 @@ const styles = StyleSheet.create({
     button: {
         backgroundColor: 'white',
         paddingVertical: 10,
-        borderRadius: 5,
+        height: 60,
+        borderWidth: 5,
+        borderRadius: 30,
     },
     text: {
-        fontSize: 30,
-        color: Colors.primary,
+        fontSize: 22,
+        color: Colors.secondary,
         marginLeft: 'auto',
         marginRight: 'auto',
         fontFamily: 'avenir-heavy'
-    }
+    },
+    buttonBox: {
+        height: 60,
+        flexDirection: 'row',
+    },
 })
 
 export default StartButton;
