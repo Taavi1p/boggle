@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import Colors from '../constants/Colors';
 
 const lettersArray = ['A', 'A', 'A', 'A', 'A', 'E', 'E', 'E', 'O', 'U', 'I', 'B', 'C', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'M', 'M', 'N', 'N', 'P', 'P', 'P', 'R', 'S', 'S', 'S', 'S', 'T', 'T', 'T', 'V', 'W', 'Y']
 const vowels = ['A', 'E', 'O', 'U', 'I'];
@@ -66,10 +67,15 @@ const DynamicBoard = props => {
     const submitWord = () => {
         //check word npm
         //add score
+        setScore(score + guessArray.length);
+        emptyArray();
     }
 
     return (
         <View>
+            <View style={styles.scoreBox}>
+                <Text style={styles.score}>{score}</Text>
+            </View>
             <View style={styles.board}>
                 <View style={styles.cubeRow}>
                     <TouchableOpacity onPress={() => { clickOnTile(randomLettersArray[0]) }}>
@@ -287,11 +293,10 @@ const styles = StyleSheet.create({
         marginRight: 10
     },
     guessBox: {
-        backgroundColor: 'black',
+        backgroundColor: Colors.dark,
         width: 200,
         height: 40,
         borderRadius: 7,
-        opacity: 0.2,
         paddingHorizontal: 5,
     },
     guessText: {
@@ -304,6 +309,15 @@ const styles = StyleSheet.create({
     image: {
         height: 30,
         width: 30
+    },
+    scoreBox: {
+        alignItems: 'center',
+        marginBottom: 12,
+    },
+    score: {
+        color: 'white',
+        fontSize: 70,
+        fontWeight: 'bold',
     }
 })
 

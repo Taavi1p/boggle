@@ -5,9 +5,8 @@ import CustomHeader from '../components/CustomHeader';
 import DynamicBoard from '../components/DynamicBoard';
 
 const SoloScreen = props => {
-
+    let time = 120;
     let score = 0;
-    let time = 10;
     const [timer, setTimer] = useState();
     const [firstRender, setFirstRender] = useState(true);
 
@@ -47,14 +46,11 @@ const SoloScreen = props => {
     }
 
     return (
+        //check against an array of already submitted words
         <ImageBackground source={require('../assets/background.jpg')} style={{width: '100%', height: '100%'}}>
             <CustomHeader noColor={true} onClick={toStart}>end game</CustomHeader>
             <View style={styles.timerBox}>
-                <Image style={styles.timerImage} source={require('../assets/timer.png')} />
-                <Text style={styles.time}>{timer ? timer : '3:00'}</Text>
-            </View>
-            <View style={styles.scoreBox}>
-                <Text style={styles.score}>{score}</Text>
+                <Text style={styles.time}>{timer ? timer : '2:00'}</Text>
             </View>
             <View style={styles.boardBox}>
                 <DynamicBoard />
@@ -79,19 +75,12 @@ const styles = StyleSheet.create({
     time: {
         fontSize: 35,
         color: 'white',
-        marginLeft: 10,
+        marginLeft: 'auto',
     },
     boardBox: {
-        justifyContent: 'center',
+        paddingTop: '7%',
         alignItems: 'center',
         flex: 1
-    },
-    scoreBox: {
-        alignItems: 'center',
-    },
-    score: {
-        color: 'white',
-        fontSize: 70,
     }
 })
 

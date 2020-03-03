@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, View, Text, ImageBackground, TouchableOpacity} from 'react-native';
-import MainButton from '../components/MainButton';
+import StartButton from '../components/StartButton';
 
 const TimeOverScreen = props => {
 
@@ -21,8 +21,10 @@ const TimeOverScreen = props => {
                     <Text style={styles.scoreText}>Final Score</Text>
                     <Text style={styles.score}>120</Text>
                     <View style={styles.buttons}>
-                        <MainButton onClick={toNewGame}>PLAY AGAIN</MainButton>
-                        <MainButton onClick={toMenu}>HOME</MainButton>
+                        <View style={styles.flex}>
+                            <StartButton style={styles.grey} onClick={toNewGame}>PLAY AGAIN</StartButton>
+                            <StartButton style={styles.grey} onClick={toMenu}>HOME</StartButton>
+                        </View>
                     </View>                
                 </View>
            </ImageBackground>
@@ -47,8 +49,19 @@ const styles = StyleSheet.create({
         marginTop: 50,
     },
     buttons: {
-
-    }
+        flex: 1,
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    flex: {
+        height: 140,
+        justifyContent: "space-between"  
+    },
+    grey: {
+        backgroundColor: '#c2c2c2',
+        borderColor: '#a1a1a1'
+    },
 })
 
 export default TimeOverScreen;
